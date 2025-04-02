@@ -21,7 +21,8 @@
     "start": "node build/http/server",
     "lint": "eslint --fix src --ext .ts",
     "build": "tsup --out-dir build",
-    "migrate": "prisma migrate dev"
+    "migrate": "prisma migrate dev",
+    "prisma": "prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^6.5.0",
