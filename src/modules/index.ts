@@ -3,6 +3,7 @@ import { GetTransactionsController } from "./expenses/transactions/GetTransactio
 import { GetTransactionsCategoriesController } from "./expenses/transactions/GetTransactionsCategories/GetTransactionsCategoriesController";
 import { CreateTransactionsCategoryController } from "./expenses/transactions/CreateTransactionsCategory/CreateTransactionsCategoryController";
 import { UpdateTransactionsCategoryController } from "./expenses/transactions/UpdateTransactionsCategory/UpdateTransactionsCategoryController";
+import { DeleteTransactionsCategoryController } from "./expenses/transactions/DeleteTransactionsCategory/DeleteTransactionsCategoryController";
 
 export {
   HelloController,
@@ -10,4 +11,5 @@ export {
   GetTransactionsCategoriesController,
   CreateTransactionsCategoryController,
   UpdateTransactionsCategoryController,
+  DeleteTransactionsCategoryController,
 };
