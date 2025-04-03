@@ -3,6 +3,7 @@ import {
   HelloController,
   GetTransactionsController,
   GetTransactionsCategoriesController,
+  CreateTransactionsCategoryController,
   UpdateTransactionsCategoryController,
 } from "@/modules";
 
@@ -10,6 +11,8 @@ const helloController = new HelloController();
 const getTransactionsController = new GetTransactionsController();
 const getTransactionsCategoriesController =
   new GetTransactionsCategoriesController();
+const createTransactionsCategoryController =
+  new CreateTransactionsCategoryController();
 const updateTransactionsCategoryController =
   new UpdateTransactionsCategoryController();
 
@@ -27,7 +30,7 @@ export async function router(app: FastifyInstance) {
   });
 
   app.post("/expenses/transactions/categories", async (request, response) => {
-    return createTransationsCategoryController.handle(request, response);
+    return createTransactionsCategoryController.handle(request, response);
   });
 
   app.put(
