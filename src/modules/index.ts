@@ -6,6 +6,7 @@ import { UpdateTransactionsCategoryController } from "./expenses/transactions/ca
 import { DeleteTransactionsCategoryController } from "./expenses/transactions/categories/DeleteTransactionsCategory/DeleteTransactionsCategoryController";
 import { CreateTransactionsController } from "./expenses/transactions/CreateTransactions/CreateTransactionsController";
 import { DeleteTransactionsController } from "./expenses/transactions/DeleteTransactions/DeleteTransactionsController";
+import { UpdateTransactionController } from "./expenses/transactions/UpdateTransaction/UpdateTransactionController";
 
 export {
   HelloController,
@@ -16,4 +17,5 @@ export {
   DeleteTransactionsCategoryController,
   CreateTransactionsController,
   DeleteTransactionsController,
+  UpdateTransactionController,
 };
