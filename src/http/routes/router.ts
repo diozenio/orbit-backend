@@ -7,6 +7,7 @@ import {
   UpdateTransactionsCategoryController,
   DeleteTransactionsCategoryController,
   CreateTransactionsController,
+  DeleteTransactionsController,
 } from "@/modules";
 
 const helloController = new HelloController();
@@ -20,6 +21,7 @@ const updateTransactionsCategoryController =
 const deleteTransactionsCategoryController =
   new DeleteTransactionsCategoryController();
 const createTransactionsController = new CreateTransactionsController();
+const deleteTransactionsController = new DeleteTransactionsController();
 
 export async function router(app: FastifyInstance) {
   app.get("/hello", async (request, response) => {
@@ -32,6 +34,10 @@ export async function router(app: FastifyInstance) {
 
   app.post("/expenses/transactions", async (request, response) => {
     return createTransactionsController.handle(request, response);
+  });
+
+  app.delete("/expenses/transactions", async (request, response) => {
+    return deleteTransactionsController.handle(request, response);
   });
 
   app.get("/expenses/transactions/categories", async (request, response) => {
