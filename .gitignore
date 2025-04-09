@@ -6,6 +6,3 @@ node_modules
 
 # Build directory
 build
-
-# Prisma
-prisma/migrations
