@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const envSchema = z.object({
-  PORT: z.coerce.number().default(3000),
+  PORT: z.coerce.number().default(8080),
   NODE_ENV: z.string(),
 });
 
