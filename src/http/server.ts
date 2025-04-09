@@ -1,9 +1,12 @@
 import fastify from "fastify";
+
 import { router } from "@/http/routes/router";
 import { env } from "@/env";
+import corsPlugin from "@/plugins/cors";
 
 const app = fastify();
 
+corsPlugin(app);
 app.register(router, { prefix: "/api" });
 
 const port = env.PORT;
