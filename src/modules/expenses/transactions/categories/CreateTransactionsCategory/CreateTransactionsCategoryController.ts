@@ -5,11 +5,13 @@ import { createTransactionCategoryParams } from "./CreateTransactionsCategoryPar
 class CreateTransactionsCategoryController {
   async handle(request: FastifyRequest, response: FastifyReply) {
     try {
-      const { name } = createTransactionCategoryParams.parse(request.body);
+      const { name, icon } = createTransactionCategoryParams.parse(
+        request.body
+      );
       const createTransactionsCategoryUseCase =
         new CreateTransactionsCategoryUseCase();
       const transactionCategory =
-        await createTransactionsCategoryUseCase.execute({ name });
+        await createTransactionsCategoryUseCase.execute({ name, icon });
       return response.status(201).send(transactionCategory);
     } catch (error) {
       return response.code(400).send(error);

@@ -2,10 +2,11 @@ import { prisma } from "@/lib/prisma";
 import { CreateTransactionCategoryParams } from "./CreateTransactionsCategoryParams";
 
 class CreateTransactionsCategoryUseCase {
-  async execute({ name }: CreateTransactionCategoryParams) {
+  async execute({ name, icon }: CreateTransactionCategoryParams) {
     const transactionCategory = await prisma.transactionCategory.create({
       data: {
         name,
+        icon,
       },
     });
 

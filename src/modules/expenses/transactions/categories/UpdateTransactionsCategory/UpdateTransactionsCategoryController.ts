@@ -5,7 +5,7 @@ import { updateTransactionsCategoryParams } from "./UpdateTransactionsCategoryPa
 class UpdateTransactionsCategoryController {
   async handle(request: FastifyRequest, response: FastifyReply) {
     try {
-      const { id, name } = updateTransactionsCategoryParams.parse({
+      const { id, name, icon } = updateTransactionsCategoryParams.parse({
         ...(request.params as Record<string, unknown>),
         ...(request.body as Record<string, unknown>),
       });
@@ -13,7 +13,7 @@ class UpdateTransactionsCategoryController {
       const updateTransactionsCategoryUseCase =
         new UpdateTransactionsCategoryUseCase();
       const transactionCategory =
-        await updateTransactionsCategoryUseCase.execute({ id, name });
+        await updateTransactionsCategoryUseCase.execute({ id, name, icon });
       return response.status(200).send(transactionCategory);
     } catch (error) {
       return response.code(400).send(error);
