@@ -31,3 +31,14 @@ model Transaction {
   updatedAt             DateTime            @updatedAt
   transactionCategoryId String
 }
+
+model MonthlyLimit {
+  id        String   @id @default(uuid())
+  month     Int
+  year      Int
+  amount    Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([month, year])
+}
