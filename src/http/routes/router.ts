@@ -10,6 +10,7 @@ import {
   DeleteTransactionsController,
   UpdateTransactionController,
   GetExpensesController,
+  SetMonthlyLimitController,
 } from "@/modules";
 
 const helloController = new HelloController();
@@ -26,6 +27,7 @@ const createTransactionsController = new CreateTransactionsController();
 const deleteTransactionsController = new DeleteTransactionsController();
 const updateTransactionController = new UpdateTransactionController();
 const getExpensesController = new GetExpensesController();
+const setMonthlyLimitController = new SetMonthlyLimitController();
 
 export async function router(app: FastifyInstance) {
   app.get("/hello", async (request, response) => {
@@ -72,5 +74,9 @@ export async function router(app: FastifyInstance) {
 
   app.get("/expenses", async (request, response) => {
     return getExpensesController.handle(request, response);
+  });
+
+  app.post("/expenses/monthly-limit", async (request, response) => {
+    return setMonthlyLimitController.handle(request, response);
   });
 }

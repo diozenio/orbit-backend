@@ -8,6 +8,7 @@ import { CreateTransactionsController } from "./expenses/transactions/CreateTran
 import { DeleteTransactionsController } from "./expenses/transactions/DeleteTransactions/DeleteTransactionsController";
 import { UpdateTransactionController } from "./expenses/transactions/UpdateTransaction/UpdateTransactionController";
 import { GetExpensesController } from "./expenses/GetExpenses/GetExpensesController";
+import { SetMonthlyLimitController } from "./expenses/MonthlyLimit/SetMonthlyLimitController";
 
 export {
   HelloController,
@@ -20,4 +21,5 @@ export {
   DeleteTransactionsController,
   UpdateTransactionController,
   GetExpensesController,
+  SetMonthlyLimitController,
 };

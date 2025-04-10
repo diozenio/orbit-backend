@@ -35,7 +35,16 @@ class GetExpensesUseCase {
       },
     });
 
-    const monthlyLimit = 2500;
+    const monthlyLimitRecord = await prisma.monthlyLimit.findUnique({
+      where: {
+        month_year: {
+          month,
+          year,
+        },
+      },
+    });
+
+    const monthlyLimit = monthlyLimitRecord?.amount ?? 0;
 
     const totalSpent = transactions.reduce((acc, transaction) => {
       return acc + Math.abs(transaction.amount);
@@ -44,12 +53,11 @@ class GetExpensesUseCase {
     const dailyLimit = monthlyLimit / dayjs(endDate).daysInMonth();
 
     return {
-      transactions,
-      dailyExpenses,
       totalSpent,
       dailyLimit,
       monthlyLimit,
       remaining: monthlyLimit - totalSpent,
+      dailyExpenses,
     };
   }
 }
