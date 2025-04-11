@@ -2,9 +2,11 @@ import { prisma } from "@/lib/prisma";
 import { GetExpensesParams } from "./GetExpensesParams";
 import dayjs from "dayjs";
 import { getMonthInterval } from "@/lib/date";
-import { generateDailyExpenses } from "./generateDailyExpenses";
-import { getTotalSpentAmount } from "./getTotalSpentAmount";
-import { getDailyLimit } from "./getDailyLimit";
+import {
+  generateDailyExpenses,
+  getDailyLimit,
+  getTotalSpentAmount,
+} from "./utils";
 
 class GetExpensesUseCase {
   async execute({ month, year }: GetExpensesParams) {
