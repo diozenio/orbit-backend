@@ -4,14 +4,7 @@ import dayjs from "dayjs";
 import { getMonthInterval } from "@/lib/date";
 import { generateDailyExpenses } from "./generateDailyExpenses";
 import { getTotalSpentAmount } from "./getTotalSpentAmount";
-
-function getDailyLimit(remaining: number, daysLeft: number) {
-  if (daysLeft > 0) {
-    return Math.floor(remaining / daysLeft);
-  }
-
-  return 0;
-}
+import { getDailyLimit } from "./getDailyLimit";
 
 class GetExpensesUseCase {
   async execute({ month, year }: GetExpensesParams) {
