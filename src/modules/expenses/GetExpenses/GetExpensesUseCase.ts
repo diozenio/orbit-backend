@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { GetExpensesParams } from "./GetExpensesParams";
 import dayjs from "dayjs";
+import { getMonthInterval } from "@/lib/date";
 
 const dailyExpenses = [
   { date: "2025-03-24", amount: 100 },
@@ -11,15 +12,6 @@ const dailyExpenses = [
   { date: "2025-03-29", amount: 30 },
   { date: "2025-03-30", amount: 95 },
 ];
-
-function getMonthInterval(month: number, year: number) {
-  const base = dayjs(`${year}-${month}-01`);
-
-  return {
-    startDate: base.startOf("month").toDate(),
-    endDate: base.endOf("month").toDate(),
-  };
-}
 
 function getDailyLimit(remaining: number, daysLeft: number) {
   if (daysLeft > 0) {
