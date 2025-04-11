@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { GetExpensesParams } from "./GetExpensesParams";
 import dayjs from "dayjs";
 import { getMonthInterval } from "@/lib/date";
+import { getTotalSpentAmount } from "./getTotalSpentAmount";
 
 const dailyExpenses = [
   { date: "2025-03-24", amount: 100 },
@@ -20,6 +21,7 @@ function getDailyLimit(remaining: number, daysLeft: number) {
 
   return 0;
 }
+
 class GetExpensesUseCase {
   async execute({ month, year }: GetExpensesParams) {
     const { startDate, endDate } = getMonthInterval(month, year);
@@ -45,9 +47,7 @@ class GetExpensesUseCase {
 
     const monthlyLimit = monthlyLimitRecord?.amount ?? 0;
 
-    const totalSpent = transactions.reduce((acc, transaction) => {
-      return acc + Math.abs(transaction.amount);
-    }, 0);
+    const totalSpent = getTotalSpentAmount(transactions);
 
     const remaining = monthlyLimit - totalSpent;
     const daysLeft = dayjs(endDate).diff(dayjs(), "day");
