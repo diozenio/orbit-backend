@@ -12,7 +12,7 @@ const dailyExpenses = [
   { date: "2025-03-30", amount: 95 },
 ];
 
-export function getMonthInterval(month: number, year: number) {
+function getMonthInterval(month: number, year: number) {
   const base = dayjs(`${year}-${month}-01`);
 
   return {
@@ -21,6 +21,13 @@ export function getMonthInterval(month: number, year: number) {
   };
 }
 
+function getDailyLimit(remaining: number, daysLeft: number) {
+  if (daysLeft > 0) {
+    return Math.floor(remaining / daysLeft);
+  }
+
+  return 0;
+}
 class GetExpensesUseCase {
   async execute({ month, year }: GetExpensesParams) {
     const { startDate, endDate } = getMonthInterval(month, year);
@@ -50,13 +57,15 @@ class GetExpensesUseCase {
       return acc + Math.abs(transaction.amount);
     }, 0);
 
-    const dailyLimit = monthlyLimit / dayjs(endDate).daysInMonth();
+    const remaining = monthlyLimit - totalSpent;
+    const daysLeft = dayjs(endDate).diff(dayjs(), "day");
+    const dailyLimit = getDailyLimit(remaining, daysLeft);
 
     return {
       totalSpent,
       dailyLimit,
       monthlyLimit,
-      remaining: monthlyLimit - totalSpent,
+      remaining,
       dailyExpenses,
     };
   }
