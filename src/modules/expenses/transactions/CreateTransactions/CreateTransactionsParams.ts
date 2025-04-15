@@ -11,7 +11,7 @@ export const transactionSchema = z.object({
     invalid_type_error: "Type must be either income or expense",
   }),
   transactionCategoryId: z.string().uuid("Invalid transaction category ID"),
-  createdAt: z.date().optional(),
+  createdAt: z.coerce.date().optional(),
 });
 
 export const createTransactionsParams = z.object({
